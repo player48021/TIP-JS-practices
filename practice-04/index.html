@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ПР4 — Задачи и localStorage</title>
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="src/main.js"></script>
+</head>
+<body>
+<main class="container">
+<h1>Список задач</h1>
+<p>Практическая работа №4 — формы, валидация и localStorage</p>
+<form id="task-form">
+<h2 id="form-heading">Добавить задачу</h2>
+<label for="task-id">ID</label><input id="task-id" name="id" type="number" min="1" step="1" required>
+<label for="task-title">Название</label><input id="task-title" name="title" maxlength="100" required>
+<label for="task-priority">Приоритет</label>
+<select id="task-priority" name="priority"><option value="low">Низкий</option><option value="medium" selected>Средний</option><option value="high">Высокий</option></select>
+<p id="form-error" role="alert"></p>
+<div class="actions"><button type="submit">Сохранить</button><button type="button" id="cancel-edit">Отмена</button></div>
+</form>
+<section class="summary" aria-live="polite">
+<span>Всего: <b id="total">0</b></span><span>Выполнено: <b id="completed">0</b></span><span>В работе: <b id="pending">0</b></span>
+</section>
+<nav id="filters" class="actions" aria-label="Фильтр">
+<button type="button" data-filter="all" aria-pressed="true">Все</button>
+<button type="button" data-filter="pending" aria-pressed="false">В работе</button>
+<button type="button" data-filter="completed" aria-pressed="false">Выполненные</button>
+<button type="button" id="reset">Сбросить данные</button>
+</nav>
+<p id="message" role="status"></p><p id="empty" hidden>В этом разделе задач нет.</p>
+<ul id="task-list"></ul>
+</main>
+</body>
+</html>
