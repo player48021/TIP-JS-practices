@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ПР3 — Список задач</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/main.js"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Мои задачи</h1>
+    <p>Практическая работа № 3 — DOM и события</p>
+
+    <form id="task-form">
+      <label for="task-title">Название задачи</label>
+      <input id="task-title" name="title" maxlength="100" required placeholder="Например, повторить JavaScript">
+      <label for="task-priority">Приоритет</label>
+      <select id="task-priority" name="priority">
+        <option value="low">Низкий</option>
+        <option value="medium" selected>Средний</option>
+        <option value="high">Высокий</option>
+      </select>
+      <button type="submit">Добавить задачу</button>
+    </form>
+
+    <section class="summary" aria-live="polite">
+      <span>Всего: <strong id="total-count">0</strong></span>
+      <span>Выполнено: <strong id="completed-count">0</strong></span>
+      <span>В работе: <strong id="pending-count">0</strong></span>
+      <span>Прогресс: <strong id="progress-value">0.0%</strong></span>
+    </section>
+
+    <nav class="filters" aria-label="Фильтр задач">
+      <button type="button" data-filter="all" aria-pressed="true">Все</button>
+      <button type="button" data-filter="pending" aria-pressed="false">В работе</button>
+      <button type="button" data-filter="completed" aria-pressed="false">Выполненные</button>
+    </nav>
+
+    <p id="operation-message" role="status" aria-live="polite"></p>
+    <p id="empty-message" hidden>Задач в этом разделе нет.</p>
+    <ul id="task-list" aria-label="Список задач"></ul>
+  </main>
+</body>
+</html>
