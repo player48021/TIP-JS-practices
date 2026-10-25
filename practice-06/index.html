@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ПР6 — Клиент HTTP API</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+<main>
+  <h1>Список задач — ПР6</h1>
+  <p>Браузерный клиент, работающий с HTTP API.</p>
+  <form id="task-form">
+    <h2>Добавить задачу</h2>
+    <label for="title">Название</label>
+    <input id="title" name="title" maxlength="100" required>
+    <label for="priority">Приоритет</label>
+    <select id="priority"><option value="low">Низкий</option><option value="medium" selected>Средний</option><option value="high">Высокий</option></select>
+    <label for="category">Категория</label>
+    <select id="category" required></select>
+    <button type="submit">Добавить</button>
+  </form>
+  <section>
+    <label for="search">Поиск</label><input id="search" placeholder="Название задачи">
+    <label for="filter">Статус</label>
+    <select id="filter"><option value="">Все</option><option value="false">В работе</option><option value="true">Выполненные</option></select>
+  </section>
+  <p id="status" role="status">Загрузка…</p><p id="error" role="alert"></p>
+  <ul id="tasks"></ul>
+</main>
+</body>
+</html>

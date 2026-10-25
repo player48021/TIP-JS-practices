@@ -1,0 +1,11 @@
+{
+  "name": "tip-js-practice-06",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start:api": "node api/server.mjs",
+    "start:web": "node tools/serve.mjs",
+    "check": "node checks/api.checks.js"
+  }
+}

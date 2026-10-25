@@ -1,0 +1,11 @@
+* { box-sizing: border-box; }
+body { margin: 0; padding: 2rem 1rem; background: #f3f5f8; color: #202938; font: 16px/1.5 system-ui, sans-serif; }
+main { max-width: 850px; margin: auto; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 8px 28px #17203312; }
+h1, h2 { line-height: 1.2; }
+form, section { display: grid; gap: .6rem; margin: 1.2rem 0; }
+input, select, button { padding: .65rem .8rem; font: inherit; }
+button { cursor: pointer; margin: .25rem .35rem .25rem 0; }
+ul { padding-left: 1.4rem; }
+li { padding: .7rem 0; border-bottom: 1px solid #ddd; }
+#error { color: #a11; }
+#status { color: #374151; }

@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import { createApiClient } from "../src/api-client.js";
+import { createTaskApi } from "../src/task-api.js";
+const api = createTaskApi(createApiClient());
+const [tasks, categories] = await Promise.all([api.getTasks(), api.getCategories()]);
+assert.ok(tasks.tasks.length > 0);
+assert.ok(categories.length > 0);
+assert.equal((await api.getTaskById(25)).id, 25);
+await assert.rejects(() => api.getTaskById(999), e => e.kind === "http" && e.status === 404);
+const filtered = await api.getTasks({ completed: false, priority: "high" });
+assert.ok(filtered.tasks.every(t => !t.completed && t.priority === "high"));
+console.log("ПР5 интеграция: проверки пройдены.");

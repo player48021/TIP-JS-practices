@@ -1,0 +1,17 @@
+import assert from "node:assert/strict";
+const base = "http://127.0.0.1:5507/api";
+const response = await fetch(`${base}/tasks`);
+assert.equal(response.status, 200);
+const payload = await response.json();
+assert.ok(Array.isArray(payload.data));
+assert.ok(payload.data.length > 0);
+const invalid = await fetch(`${base}/tasks`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title: "  ", priority: "high", categoryId: 1 }) });
+assert.equal(invalid.status, 400);
+const created = await fetch(`${base}/tasks`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title: "Проверочная задача", priority: "low", categoryId: 1 }) });
+assert.equal(created.status, 201);
+const { data: task } = await created.json();
+const patched = await fetch(`${base}/tasks/${task.id}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ completed: true }) });
+assert.equal((await patched.json()).data.completed, true);
+const deleted = await fetch(`${base}/tasks/${task.id}`, { method: "DELETE" });
+assert.equal(deleted.status, 200);
+console.log("ПР6 API: проверки пройдены.");
